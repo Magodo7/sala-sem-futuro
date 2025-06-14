@@ -1,168 +1,186 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sala sem Futuro - Login</title>
-<style>
-  body {
-    background-color: #121212;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    position: relative;
-    z-index: 0;
-    overflow: hidden;
-  }
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    position: relative;
-    color: #fff200;
-    z-index: 1;
-  }
-  h1::after {
-    content: "⚡";
-    position: absolute;
-    right: -40px;
-    top: 0;
-    font-size: 3rem;
-    color: #fff200;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-  }
-  form {
-    background: #222;
-    padding: 30px 40px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px #fff200aa;
-    width: 320px;
-    text-align: center;
-    z-index: 1;
-    position: relative;
-  }
-  label {
-    display: block;
-    margin-top: 15px;
-    text-align: left;
-    font-weight: bold;
-    font-size: 0.9rem;
-  }
-  input[type="text"], input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-top: 6px;
-    border-radius: 4px;
-    border: none;
-    font-size: 1rem;
-  }
-  button {
-    margin-top: 25px;
-    background-color: #fff200;
-    border: none;
-    padding: 12px 20px;
-    font-weight: bold;
-    font-size: 1.1rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
-  }
-  button:hover {
-    background-color: #e6d800;
-  }
-  footer {
-    margin-top: 25px;
-    color: #fff200;
-    font-weight: bold;
-    font-size: 1rem;
-    z-index: 1;
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  /* Discord icon SVG style */
-  #discord-icon svg {
-    width: 20px;
-    height: 20px;
-    fill: #fff200;
-  }
-  #raios {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sala sem Futuro</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: black;
+      color: white;
+      text-align: center;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .container {
+      position: relative;
+      top: 20vh;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: yellow;
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    button {
+      background-color: yellow;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    .assinatura {
+      margin-top: 20px;
+      color: white;
+      font-size: 0.9em;
+    }
+
+    .assinatura i {
+      margin-right: 5px;
+      color: #7289da;
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<h1>Sala sem Futuro</h1>
-
-<form id="loginForm">
-  <label for="ra">RA+Digito+SP:</label>
-  <input type="text" id="ra" name="ra" placeholder="00011234667sp" required />
-
-  <label for="senha">Senha:</label>
-  <input type="password" id="senha" name="senha" placeholder="Senha" required />
-
-  <button type="submit">Fazer atividades</button>
-</form>
-
-<footer>
-  @mago7x 
-  <span id="discord-icon" aria-label="Discord">
-    <svg viewBox="0 0 245 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-      <path d="M104.4 98.5c-5.7 0-10.2 5-10.2 11.1 0 6.1 4.6 11.1 10.2 11.1 5.7 0 10.3-5 10.2-11.1 0-6.1-4.6-11.1-10.2-11.1zm36.2 0c-5.7 0-10.2 5-10.2 11.1 0 6.1 4.6 11.1 10.2 11.1 5.7 0 10.3-5 10.2-11.1 0-6.1-4.5-11.1-10.2-11.1zM189.5 20H55.2C36.7 20 22 34.7 22 53.2v115.7c0 18.5 14.7 33.2 33.2 33.2h99.1l-4.6-16 11 10.3 10.3 9.3 18.3 16.2V53.2c.1-18.5-14.6-33.2-33.3-33.2zM169 165s-5 6-9 11c17 5 24-8 24-8-5-3-15-11-15-11z"/>
-    </svg>
-  </span>
-</footer>
-
 <canvas id="raios"></canvas>
 
+<div class="container">
+  <h1>Sala sem Futuro</h1>
+  <form id="loginForm">
+    <input type="text" name="ra" placeholder="RA+Digito+sp" required /><br>
+    <input type="password" name="senha" placeholder="Senha" required /><br>
+    <button type="submit">Fazer atividades</button>
+  </form>
+  <div class="assinatura">
+    <i class="fab fa-discord"></i>mago7x
+  </div>
+</div>
+
 <script>
-  const form = document.getElementById('loginForm');
-  form.addEventListener('submit', e => {
-    e.preventDefault();
+// ========== RAIO DE FUNDO ==========
 
-    const ra = form.ra.value.trim();
-    const senha = form.senha.value.trim();
+const canvas = document.getElementById('raios');
+const ctx = canvas.getContext('2d');
 
-    if (!ra || !senha) {
-      alert("Preencha todos os campos!");
-      return;
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+function random(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+class Raio {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = random(0, canvas.width);
+    this.y = random(0, canvas.height);
+    this.length = random(50, 150);
+    this.speed = random(2, 5);
+    this.opacity = 0;
+    this.fadingIn = true;
+  }
+  update() {
+    if (this.fadingIn) {
+      this.opacity += 0.02;
+      if (this.opacity >= 1) this.fadingIn = false;
+    } else {
+      this.opacity -= 0.02;
+      if (this.opacity <= 0) this.reset();
     }
+    this.y += this.speed;
+    if (this.y > canvas.height) this.reset();
+  }
+  draw() {
+    ctx.strokeStyle = `rgba(255, 242, 0, ${this.opacity})`;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(this.x, this.y);
+    ctx.lineTo(this.x, this.y - this.length);
+    ctx.stroke();
+  }
+}
 
-    alert(`RA: ${ra} | Senha: ${senha} \nCarregando script...`);
+const raios = [];
+for (let i = 0; i < 15; i++) {
+  raios.push(new Raio());
+}
 
-    // Carrega e executa o script externo
-    fetch("https://corsproxy.io/?url=https://raw.githubusercontent.com/DarkModde/Dark-Scripts/refs/heads/main/TarefaResolver.js")
-      .then(t => t.text())
-      .then(code => {
-        try {
-          eval(code);
-        } catch (err) {
-          alert("Erro ao executar o script: " + err.message);
-        }
-      })
-      .catch(err => {
-        alert("Erro ao carregar o script: " + err.message);
-      });
-  });
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let raio of raios) {
+    raio.update();
+    raio.draw();
+  }
+  requestAnimationFrame(animate);
+}
+animate();
+
+// ========== BOTÃO FAZER ATIVIDADES ==========
+
+const form = document.getElementById('loginForm');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+
+  const ra = form.ra.value.trim();
+  const senha = form.senha.value.trim();
+
+  if (!ra || !senha) {
+    alert("Preencha todos os campos!");
+    return;
+  }
+
+  alert(`RA: ${ra} | Senha: ${senha} \nCarregando script...`);
+
+  // Executa o script externo
+  fetch("https://corsproxy.io/?url=https://raw.githubusercontent.com/DarkModde/Dark-Scripts/refs/heads/main/TarefaResolver.js")
+    .then(t => t.text())
+    .then(code => {
+      try {
+        eval(code);
+      } catch (err) {
+        alert("Erro ao executar o script: " + err.message);
+      }
+    })
+    .catch(err => {
+      alert("Erro ao carregar o script: " + err.message);
+    });
+});
 </script>
-
 
 </body>
 </html>
